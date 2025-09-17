@@ -1,17 +1,51 @@
 import * as React from 'react';
+import { StyleSheet, View } from 'react-native';
 import { Checkbox } from 'react-native-paper';
 
 const MyComponent = () => {
-  const [checked, setChecked] = React.useState(false);
+  const [checkedRed, setCheckedRed] = React.useState(false);
+  const [checkedGreen, setCheckedGreen] = React.useState(false);
+  const [checkedBlue, setCheckedBlue] = React.useState(false);
 
   return (
-    <Checkbox
-      status={checked ? 'checked' : 'unchecked'}
-      onPress={() => {
-        setChecked(!checked);
-      }}
-    />
+    <View>
+      <View style={[styles.checkBox, { borderColor: 'red' }]}>
+        <Checkbox
+          status={checkedRed ? 'checked' : 'unchecked'}
+          onPress={() => setCheckedRed(!checkedRed)}
+          color="white"
+        />
+      </View>
+
+      <View style={[styles.checkBox, { borderColor: 'green' }]}>
+        <Checkbox
+          status={checkedGreen ? 'checked' : 'unchecked'}
+          onPress={() => setCheckedGreen(!checkedGreen)}
+          color="white"
+        />
+      </View>
+
+      <View style={[styles.checkBox, { borderColor: 'blue' }]}>
+        <Checkbox
+          status={checkedBlue ? 'checked' : 'unchecked'}
+          onPress={() => setCheckedBlue(!checkedBlue)}
+          color="white"
+        />
+      </View>
+    </View>
   );
 };
+
+const styles = StyleSheet.create({
+  checkBox: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderWidth: 3,
+    borderRadius: 6,
+    padding: 8,
+    marginBottom: 20,
+    backgroundColor:  'black',
+  },
+});
 
 export default MyComponent;
